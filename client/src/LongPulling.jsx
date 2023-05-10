@@ -6,7 +6,7 @@ const LongPulling = () => {
         <div>
             <div>
                 <input type="text" />
-                <button></button>
+                <button>Отправить</button>
             </div>
         </div>
       
