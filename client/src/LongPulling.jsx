@@ -3,12 +3,17 @@ import React,{useState} from 'react'
 const LongPulling = () => {
     const [messages,setMessages] = useState([])
     const [value,setValue] = useState('')
+
+
+    const sendMessage = ()=>{
+        
+    }
   return (
     <div className='center'>
         <div>
             <div>
-                <input type="text" />
-                <button>Отправить</button>
+                <input   value={value} onChange={e =>setValue(e.target.value)}type="text" />
+                <button onClick={sendMassage}>Отправить</button>
             </div>
             <div className="messages">
                 {messages.map((mess)=>{
