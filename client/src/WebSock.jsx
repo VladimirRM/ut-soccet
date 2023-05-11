@@ -6,27 +6,27 @@ const WebSock = () => {
     const [value, setValue] = useState('');
     const socket = useRef()
     const [connected,setConnected] = useState(false)
+    const [username,setUsername] = useState('')
 
     
     
-        useEffect(() => {
-      socket.current = new WebSocket('ws://localhost:5000')
-      socket.current.onopen = ()=>{
-          setConnected(true)
-      }
-      socket.current.onmessage = ()=>{
-
-      }
-      socket.current.onclose = ()=>{
-      console.log('Socket close')
-      }
-      socket.current.onerror = ()=>{
-      console.log('Socket error')
-       
-      }
-        }, [])
     
-      
+      function connect (){
+        socket.current = new WebSocket('ws://localhost:5000')
+        socket.current.onopen = ()=>{
+            setConnected(true)
+        }
+        socket.current.onmessage = ()=>{
+  
+        }
+        socket.current.onclose = ()=>{
+        console.log('Socket close')
+        }
+        socket.current.onerror = ()=>{
+        console.log('Socket error')
+         
+        }
+      }
     
         const sendMessage = async () => {
             await axios.post('http://localhost:5000/new-messages', {
@@ -39,7 +39,7 @@ const WebSock = () => {
            return (
             <div className='center'>
                 <div className='form'>
-                    <input type="text"  placeholder='Enter your name'/>
+                    <input   value={username} onChange={e =>setUsername(e.target.value)}type="text"  placeholder='Enter your name'/>
                     <button>Connected</button>
                 </div>
             </div>
